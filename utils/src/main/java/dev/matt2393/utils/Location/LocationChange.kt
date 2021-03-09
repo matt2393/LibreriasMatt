@@ -22,12 +22,12 @@ object LocationChange {
     const val CODE_PERMISO_LOC = 12321
     const val CODE_ACTIVE_GPS = 32123
     init {
-        locRequestSimple = LocationRequest()
+        locRequestSimple = LocationRequest.create()
             .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
             .setNumUpdates(1)
             .setInterval(100)
             .setFastestInterval(100)
-        locRequestMulti = LocationRequest()
+        locRequestMulti = LocationRequest.create()
             .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
             .setInterval(5000)
             .setFastestInterval(5000)
@@ -72,6 +72,10 @@ object LocationChange {
             verifHabilitarGps(fragment, locationEnableListener)
     }
 
+    /**
+     * comprobar en onRequestPermissionsResult
+     * para verificar si se otorgaron los permisos necesarios
+     */
     fun comprobarPermisos(requestCode: Int,
                           grantResults: IntArray,
                           activity: FragmentActivity,
@@ -84,10 +88,7 @@ object LocationChange {
         }
     }
 
-    /**
-     * comprobar en onRequestPermissionsResult
-     * para verificar si se otorgaron los permisos necesarios
-     */
+
     fun comprobarPermisos(requestCode: Int,
                           grantResults: IntArray,
                           fragment: Fragment,
