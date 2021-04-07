@@ -1,4 +1,4 @@
-package com.rayo.rayo.Tools
+package dev.matt2393.utils.Location
 
 import android.Manifest
 import android.app.Activity

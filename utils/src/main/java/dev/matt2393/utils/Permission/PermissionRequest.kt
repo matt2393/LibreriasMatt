@@ -1,14 +1,11 @@
 package dev.matt2393.utils.Permission
 
-import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Build
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import com.rayo.rayo.Tools.LocationChange
-import dev.matt2393.utils.Location.LocationEnableListener
 
 object PermissionRequest {
     const val CODE_PERMISOS = 12321
