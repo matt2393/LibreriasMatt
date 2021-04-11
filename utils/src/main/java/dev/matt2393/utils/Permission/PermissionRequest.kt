@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 
 object PermissionRequest {
-    const val CODE_PERMISOS = 12321
+    const val CODE_PERMISOS = 55555
 
     fun permisos(activity: FragmentActivity,
                  permissionListener: PermissionListener,
