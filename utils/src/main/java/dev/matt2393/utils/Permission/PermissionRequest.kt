@@ -2,93 +2,78 @@ package dev.matt2393.utils.Permission
 
 import android.content.pm.PackageManager
 import android.os.Build
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
+import dev.matt2393.utils.Aux.FragmentAux
+import dev.matt2393.utils.Aux.ResultListener
 
-object PermissionRequest {
-    const val CODE_PERMISOS = 55555
+class PermissionRequest {
+    private var activity: AppCompatActivity? =null
+    private var fragment: Fragment? = null
+    private lateinit var fragmentManager: FragmentManager
 
-    fun permisos(activity: FragmentActivity,
-                 permissionListener: PermissionListener,
-                 vararg permissions: String
-    ) {
+    companion object {
+        fun with(activity: AppCompatActivity): PermissionRequest {
+            return PermissionRequest(activity)
+        }
+        fun with(fragment: Fragment): PermissionRequest {
+            return PermissionRequest(fragment)
+        }
+    }
+    private constructor() {}
+    private constructor(activity: AppCompatActivity) {
+        this.activity = activity
+        this.fragment = null
+        fragmentManager = activity.supportFragmentManager
+    }
+    private constructor(fragment: Fragment) {
+        this.fragment = fragment
+        this.activity = null
+        fragmentManager = fragment.childFragmentManager
+    }
+
+    private fun getContext() = if(activity==null) { fragment!!.requireContext() } else { activity!! }
+
+    fun request(permissions: Array<String>, result:(permissionsMap: Map<String, Boolean>) -> Unit) {
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
             val aux = arrayListOf<String>()
+            val map = HashMap<String, Boolean>()
             permissions.forEach {
-                if(ContextCompat.checkSelfPermission(activity, it)
+                map[it] = true
+                if(ContextCompat.checkSelfPermission(getContext(), it)
                     != PackageManager.PERMISSION_GRANTED) {
+                    map[it] = false
                     aux.add(it)
                 }
 
             }
 
             if(aux.size>0) {
-                ActivityCompat.requestPermissions(
-                    activity,
-                    aux.toTypedArray(),
-                    CODE_PERMISOS
-                )
+                val resultListener = object: ResultListener {
+                    override fun permissionResult(permissions: Map<String, Boolean>) {
+                        result(map)
+                    }
+                }
+                fragmentManager.beginTransaction()
+                    .add(
+                        FragmentAux.newInstance(
+                            permissions, resultListener
+                        ), FragmentAux.TAG
+                    ).commitNowAllowingStateLoss()
             }else{
-                permissionListener.permissionGranted()
+                result(map)
             }
         }
-        else
-            permissionListener.permissionGranted()
-    }
-    fun permisos(fragment: Fragment,
-                 permissionListener: PermissionListener,
-                 vararg permissions: String
-    ) {
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
-            val aux = arrayListOf<String>()
+        else {
+            val map = HashMap<String, Boolean>()
             permissions.forEach {
-                if(ContextCompat.checkSelfPermission(fragment.context!!, it)
-                            != PackageManager.PERMISSION_GRANTED) {
-                    aux.add(it)
-                }
-
+                map[it] = true
             }
-            if(aux.size>0) {
-                fragment.requestPermissions(
-                    aux.toTypedArray(),
-                    CODE_PERMISOS
-                )
-            }else{
-                permissionListener.permissionGranted()
-            }
-
-
-        }
-        else
-            permissionListener.permissionGranted()
-    }
-
-    /**
-     * comprobar en onRequestPermissionsResult
-     * para verificar si se otorgaron los permisos necesarios
-     */
-
-    fun comprobarPermisos(requestCode: Int,
-                          grantResults: IntArray,
-                          permissionListener: PermissionListener) {
-
-        if(requestCode == CODE_PERMISOS){
-            var isGranted = true
-            grantResults.forEach {
-                if(it != PackageManager.PERMISSION_GRANTED){
-                    isGranted = false
-                    return@forEach
-                }
-            }
-            if(isGranted){
-                permissionListener.permissionGranted()
-            }else {
-                permissionListener.permissionDenied()
-            }
-        } else {
-            permissionListener.permissionDenied()
+            result(map)
         }
     }
 }

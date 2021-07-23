@@ -6,7 +6,7 @@ plugins {
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "30.0.1"
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         minSdkVersion 21
@@ -41,16 +41,16 @@ android {
 
                     // You can then customize attributes of the publication as shown below.
                     groupId = 'dev.matt2393.utils'
-                    artifactId = 'final'
-                    version = '1.0'
+                    artifactId = 'permissions'
+                    version = '0.4'
                 }
                 // Creates a Maven publication called “debug”.
                 debug(MavenPublication) {
                     // Applies the component for the debug build variant.
                     from components.debug
                     groupId = 'dev.matt2393.utils'
-                    artifactId = 'final-debug'
-                    version = '1.0'
+                    artifactId = 'permissions-debug'
+                    version = '0.4'
                 }
             }
             repositories {
@@ -67,6 +67,8 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.3.0'
     implementation 'com.google.android.gms:play-services-location:18.0.0'
+    implementation 'androidx.activity:activity-ktx:1.2.2'
+    implementation 'androidx.fragment:fragment-ktx:1.3.3'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
