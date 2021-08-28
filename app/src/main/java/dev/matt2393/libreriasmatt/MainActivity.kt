@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Exito", Toast.LENGTH_SHORT).show()
                 Log.e("LOCATION", "Exito")
             }, error = {
+
                 Toast.makeText(this, "Error: ${it.name}", Toast.LENGTH_SHORT).show()
                 Log.e("LOCATIONError", it.name)
             })
