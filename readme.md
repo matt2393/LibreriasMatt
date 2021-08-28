@@ -16,7 +16,7 @@ Use gradle:
 - build.gradle (app)
 ```gradle
     dependencies {
-	        implementation 'com.github.matt2393.LibreriasMatt:permissions:0.4'
+	        implementation 'com.github.matt2393.LibreriasMatt:permissions:0.5'
 	}
 ```
 ## Require
