@@ -1,9 +1,7 @@
-package dev.matt2393.utils.Aux
+package dev.matt2393.utils.aux
 
-import android.content.Context
-import android.os.Bundle
+/*import android.os.Bundle
 import android.util.Log
-import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -65,4 +63,4 @@ internal class FragmentAux: Fragment() {
             onDestroy()
         }.launch(intentSenderRequest)
     }
-}
+}*/

@@ -1,29 +1,23 @@
-package dev.matt2393.utils.Location
+package dev.matt2393.utils.location
 
-import android.Manifest
+/*import android.Manifest
 import android.app.Activity
-import android.content.Context
 import android.content.IntentSender
 import android.content.pm.PackageManager
 import android.os.Build
 import android.util.Log
 import androidx.activity.result.ActivityResult
-import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.IntentSenderRequest
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.LocationSettingsRequest
-import dev.matt2393.utils.Aux.FragmentAux
-import dev.matt2393.utils.Aux.ResultListener
-import dev.matt2393.utils.Location.LocationEnableListener
+import dev.matt2393.utils.aux.FragmentAux
+import dev.matt2393.utils.aux.ResultListener
 
 object LocationPermission {
 
@@ -294,4 +288,4 @@ object LocationPermission {
         }
     }
 
-}
+}*/

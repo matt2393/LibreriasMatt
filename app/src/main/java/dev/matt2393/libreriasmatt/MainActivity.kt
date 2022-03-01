@@ -6,7 +6,7 @@ import android.util.Log
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
-import dev.matt2393.utils.Location.LocationPermission
+//import dev.matt2393.utils.location.LocationPermission
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun pedirPermisos() {
-        LocationPermission.with(this)
+        /*LocationPermission.with(this)
             .request(success = {
                 Toast.makeText(this, "Exito", Toast.LENGTH_SHORT).show()
                 Log.e("LOCATION", "Exito")
@@ -32,6 +32,6 @@ class MainActivity : AppCompatActivity() {
 
                 Toast.makeText(this, "Error: ${it.name}", Toast.LENGTH_SHORT).show()
                 Log.e("LOCATIONError", it.name)
-            })
+            })*/
     }
 }

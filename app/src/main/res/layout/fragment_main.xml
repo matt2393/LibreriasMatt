@@ -11,4 +11,12 @@
         android:id="@+id/buttonPermisos"
         android:layout_gravity="center"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Location"
+        android:id="@+id/buttonLoc"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="bottom|center_horizontal"/>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

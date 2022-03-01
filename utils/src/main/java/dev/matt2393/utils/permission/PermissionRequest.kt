@@ -1,15 +1,13 @@
-package dev.matt2393.utils.Permission
+package dev.matt2393.utils.permission
 
-import android.content.pm.PackageManager
+/*import android.content.pm.PackageManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
-import dev.matt2393.utils.Aux.FragmentAux
-import dev.matt2393.utils.Aux.ResultListener
+import dev.matt2393.utils.aux.FragmentAux
+import dev.matt2393.utils.aux.ResultListener
 
 class PermissionRequest {
     private var activity: AppCompatActivity? =null
@@ -77,3 +75,4 @@ class PermissionRequest {
         }
     }
 }
+*/
