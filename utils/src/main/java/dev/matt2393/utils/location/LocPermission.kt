@@ -47,7 +47,7 @@ object LocPermission {
     fun init(fr: Fragment) {
         this.ac = fr.requireActivity()
         regPer =
-            ac.registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) {
+            fr.registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) {
                 if (
                     it[Manifest.permission.ACCESS_FINE_LOCATION] == true &&
                     it[Manifest.permission.ACCESS_COARSE_LOCATION] == true
@@ -59,7 +59,7 @@ object LocPermission {
             }
 
         regGps =
-            ac.registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) {
+            fr.registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) {
                 if (it.resultCode == Activity.RESULT_OK) {
                     result.onGpsSuccess()
                 } else {

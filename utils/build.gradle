@@ -82,7 +82,7 @@ afterEvaluate {
                 // You can then customize attributes of the publication as shown below.
                 groupId = 'dev.matt2393.utils'
                 artifactId = 'permissions'
-                version = '0.6'
+                version = '0.6.1'
             }
             // Creates a Maven publication called “debug”.
             debug(MavenPublication) {
@@ -90,7 +90,7 @@ afterEvaluate {
                 from components.debug
                 groupId = 'dev.matt2393.utils'
                 artifactId = 'permissions-debug'
-                version = '0.6'
+                version = '0.6.1'
             }
         }
         repositories {

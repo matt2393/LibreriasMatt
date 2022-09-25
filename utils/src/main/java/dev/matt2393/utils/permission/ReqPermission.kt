@@ -22,7 +22,7 @@ object ReqPermission {
     fun init(fr: Fragment) {
         this.ac = fr.requireActivity()
         regPer =
-            ac.registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) {
+            fr.registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) {
                 results.onPermissionResults(it)
             }
     }
