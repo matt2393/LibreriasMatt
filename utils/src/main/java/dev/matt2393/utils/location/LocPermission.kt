@@ -12,6 +12,7 @@ import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.LocationSettingsRequest
+import com.google.android.gms.location.Priority
 
 object LocPermission {
 
@@ -71,11 +72,11 @@ object LocPermission {
     fun launch(success: () -> Unit, error: (err: ErrorType) -> Unit) {
         result = object : Result {
             override fun onPermissionSuccess() {
-                val locRequestSimple = LocationRequest.create()
-                    .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
-                    .setNumUpdates(1)
-                    .setInterval(100)
-                    .setFastestInterval(100)
+                val locRequestSimple = LocationRequest.Builder(Priority.PRIORITY_HIGH_ACCURACY, 100)
+                    .setMinUpdateIntervalMillis(100)
+                    .setMaxUpdateDelayMillis(200)
+                    .setMaxUpdates(1)
+                    .build()
                 val locSettings = LocationSettingsRequest.Builder()
                     .addLocationRequest(locRequestSimple)
                     .setAlwaysShow(true)
